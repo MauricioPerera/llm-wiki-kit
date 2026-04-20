@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+.vitest-cache/
+*.log
+.DS_Store
+Thumbs.db
+
+# Local-only wrangler copy (examples ship their own config)
+/wrangler.toml
+.wrangler/

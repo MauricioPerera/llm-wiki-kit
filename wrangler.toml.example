@@ -1,0 +1,26 @@
+# Example wrangler config for running the query layer on Cloudflare Workers.
+# Copy to wrangler.toml and adjust. CLI commands (init/ingest) are Node-only;
+# Workers target exposes query-only via a fetch handler built on top of the
+# library API.
+
+name = "llm-wiki-kit-query"
+main = "src/index.ts"
+compatibility_date = "2026-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Bind a js-git-store-backed R2 bucket for the wiki content tree.
+# [[r2_buckets]]
+# binding = "WIKI_CONTENT"
+# bucket_name = "your-wiki-content"
+
+# Bind a js-vector-store adapter (e.g. Vectorize) for layer 3 retrieval.
+# [[vectorize]]
+# binding = "WIKI_VECTORS"
+# index_name = "your-wiki-vectors"
+
+# Workers AI binding for an embedding adapter. Adapter code is user-supplied.
+# [ai]
+# binding = "AI"
+
+[vars]
+WIKI_EMBEDDING_ADAPTER = ""

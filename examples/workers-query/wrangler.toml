@@ -1,0 +1,12 @@
+name = "llm-wiki-kit-query"
+main = "worker.ts"
+compatibility_date = "2026-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Uncomment to use Workers AI for the LLM adapter. Without this binding the
+# Worker falls back to an echo LLM (handy for verifying retrieval wiring).
+# [ai]
+# binding = "AI"
+
+[vars]
+WIKI_SEED_BUNDLED = "true"

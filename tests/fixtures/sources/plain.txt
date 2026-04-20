@@ -1,0 +1,9 @@
+A2E benchmark results — April 2026
+
+The A2E benchmark measures deploy-readiness of small LLMs on agentic tasks.
+The April 2026 leaderboard shows Llama 3.2 1B scoring 86% when paired with
+three guard rails. Previous iterations peaked at 72%.
+
+Methodology: 420 tasks across nine domains. Each task requires the model to
+call at least two tools and produce a structured output. Scored on first-pass
+success.

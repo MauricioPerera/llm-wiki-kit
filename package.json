@@ -1,0 +1,70 @@
+{
+  "name": "llm-wiki-kit",
+  "version": "0.1.0-pre",
+  "description": "LLM-maintained markdown wiki on a git-native substrate. Built on js-doc-store, js-vector-store, and js-git-store.",
+  "keywords": ["llm", "wiki", "obsidian", "rag", "retrieval", "markdown", "bm25", "embeddings", "agent", "knowledge-base"],
+  "homepage": "https://github.com/MauricioPerera/llm-wiki-kit",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MauricioPerera/llm-wiki-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MauricioPerera/llm-wiki-kit/issues"
+  },
+  "author": "Mauricio Perera",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./cli": "./src/cli/index.ts"
+  },
+  "bin": {
+    "wiki": "./src/cli/index.ts"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "bench": "tsx tests/benchmarks/index.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "@mozilla/readability": "^0.5.0",
+    "citty": "^0.1.6",
+    "linkedom": "^0.18.0",
+    "remark": "^15.0.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.0",
+    "yaml": "^2.4.5",
+    "zod": "^3.23.0"
+  },
+  "peerDependenciesMeta": {
+    "zod": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@mozilla/readability": "^0.5.0",
+    "@types/node": "^20.12.0",
+    "@vitest/coverage-v8": "^1.6.1",
+    "linkedom": "^0.18.0",
+    "remark": "^15.0.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.5.0",
+    "vitest": "^1.6.0",
+    "yaml": "^2.4.5",
+    "zod": "^3.23.0"
+  },
+  "license": "MIT"
+}
