@@ -7,8 +7,9 @@
 
 import { readdir, readFile, writeFile, stat } from 'node:fs/promises';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const DIST = new URL('../dist/', import.meta.url).pathname.replace(/^\//, '');
+const DIST = fileURLToPath(new URL('../dist/', import.meta.url));
 const RE = /(from\s+['"])(\.{1,2}\/[^'"]+?)\.ts(['"])/g;
 
 async function walk(dir) {
