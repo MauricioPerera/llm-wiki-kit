@@ -170,7 +170,7 @@ CI (`.github/workflows/ci.yml`) runs Node + Deno + a `wrangler deploy --dry-run`
 This kit sits on top of three sibling libraries by the same author. All four can be used independently:
 
 - **[js-doc-store](https://github.com/MauricioPerera/js-doc-store)** — zero-dependency vanilla JS document database with MongoDB-style queries. Used here for the dedup cache (`.wiki/ingested.json`) and config.
-- **[js-vector-store](https://github.com/MauricioPerera/js-vector-store)** — zero-dependency vanilla JS vector store with Float32/Int8/1-bit quantization and IVF search. Referenced as the target for Phase 2 embedding storage (v0.1 uses an inline JSON store on the same git-backed adapter).
+- **[js-vector-store](https://github.com/MauricioPerera/js-vector-store)** — zero-dependency vanilla JS vector store with Float32/Int8/1-bit quantization and IVF search. Referenced as the target for Phase 2 embedding storage. v0.1 ships a simpler inline JSON store (`.wiki/embeddings.json` written via whatever `FileAdapter` is configured) so the retrieval layer works without the vector-store dependency.
 - **[js-git-store](https://github.com/MauricioPerera/js-git-store)** — git-native `FileStorageAdapter` for the two above, with tree-first / blob-on-demand and a dual-branch layout (index ref = light, content ref = heavy, partial-cloned). This kit's `storageAdapter` option takes a `GitStoreAdapter` directly.
 
 The pattern itself instantiates [Karpathy's llm-wiki gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f), extended to address the four scaling weaknesses flagged in the discussion (hierarchical indexes, three-layer retrieval, git-native rollback, explicit supersession chains).

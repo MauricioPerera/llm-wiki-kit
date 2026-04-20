@@ -1,6 +1,6 @@
 # ROADMAP
 
-Phased delivery. v0.1 is the scope of this contract. Later phases are out of scope unless explicitly re-contracted.
+Phased delivery. v0.1 is shipped (tag `v0.1.0-pre`). Later phases are out of scope unless explicitly re-contracted.
 
 ## v0.1 — Core ingest and query — **shipped v0.1.0-pre on 2026-04-20**
 
