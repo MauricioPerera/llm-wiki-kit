@@ -158,6 +158,8 @@ npm install
 npm test             # vitest, 86 tests
 npm run typecheck    # tsc --noEmit, strict
 npm run bench        # full benchmark suite
+npm run build        # emit dist/ (publish-ready)
+npm pack --dry-run   # preview the tarball that will land on npm
 
 deno task test       # requires deno 2.x
 deno task typecheck

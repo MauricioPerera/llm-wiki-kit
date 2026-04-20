@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 import { defineCommand, runMain } from 'citty';
-import { mkdir, readFile, readdir, writeFile, rm } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
-import { WikiError, WIKI_ERROR_EXIT_CODES, isWikiError } from '../lib/errors.ts';
+import { dirname, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { isWikiError } from '../lib/errors.ts';
 import type { FileAdapter } from '../types/index.ts';
 import { initCmd } from './commands/init.ts';
 import { ingestCmd } from './commands/ingest.ts';
 import { queryCmd } from './commands/query.ts';
 import { configCmd } from './commands/config.ts';
-
 interface CacheEntry { data: unknown; dirty: boolean; isBin: boolean; bytes?: Uint8Array }
 
 export function createFsAdapter(root: string): FileAdapter {
@@ -94,7 +94,5 @@ const main = defineCommand({
   meta: { name: 'wiki', version: '0.1.0-pre', description: 'LLM-maintained markdown wiki' },
   subCommands: { init: initCmd, ingest: ingestCmd, query: queryCmd, config: configCmd }
 });
-
-if (import.meta.url === `file://${process.argv[1]?.replace(/\\/g, '/')}`) {
-  runMain(main);
-}
+const entryArg = process.argv[1];
+if (entryArg && import.meta.url === pathToFileURL(entryArg).href) runMain(main);
