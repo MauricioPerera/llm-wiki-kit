@@ -12,7 +12,7 @@
   "compilerOptions": {
     "strict": true,
     "noImplicitAny": true,
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext", "dom", "deno.ns"]
   },
   "imports": {
     "zod": "npm:zod@^3.23.0",
