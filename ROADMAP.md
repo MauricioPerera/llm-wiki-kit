@@ -2,20 +2,25 @@
 
 Phased delivery. v0.1 is the scope of this contract. Later phases are out of scope unless explicitly re-contracted.
 
-## v0.1 — Core ingest and query
+## v0.1 — Core ingest and query — **shipped v0.1.0-pre on 2026-04-20**
 
-In scope:
+Delivered:
 
-- CLI: `init`, `ingest`, `query`, `config`
-- Text readers: md, txt, html
-- Three-layer retrieval: index grep + BM25 + embeddings on pages
-- Git-native storage via `js-doc-store` + `js-vector-store` + `js-git-store`
+- CLI: `init`, `ingest`, `query`, `config` (citty-based, Node-only)
+- Text readers: md, txt, html (readability + linkedom)
+- Three-layer retrieval: index grep + BM25 + embeddings on pages (RRF merge)
 - Markdown pages, Obsidian-compatible, zod-validated frontmatter
-- Supersession with history
-- Adapter-agnostic embeddings and LLM
-- Node, Deno, Workers targets (Workers ingest may be deferred if `js-git-store` Workers target is not ready)
+- Supersession with history (facts never deleted, pair of linked pages)
+- Adapter-agnostic embeddings and LLM (`EmbeddingAdapter`, `LLMAdapter`)
+- Node 20+ (86/86 vitest tests), Deno 2.x (8/8 smoke tests), Cloudflare Workers (query-only verified via `wrangler dev`)
+- Benchmark suite under `tests/benchmarks/` with persisted reference numbers
 
-Out of scope for v0.1:
+Deferred to a patch release:
+
+- Real git commits via `js-git-store` — the adapter is wired via the `storageAdapter` option but `js-git-store` is not yet published to npm. The CLI falls back to a plain filesystem adapter until then.
+- Workers ingest — blocked on `js-git-store` shipping a Workers-compatible target.
+
+Out of scope (never in v0.1):
 
 - Lint command
 - MCP server
@@ -26,7 +31,7 @@ Out of scope for v0.1:
 - Reranker beyond RRF
 - Concurrent ingest
 
-Acceptance: every item in `CONTRACT.md` § 6.
+Acceptance: every item in `CONTRACT.md` § 6 except real git commits (see above), which are deferred to v0.1.x once `js-git-store` publishes.
 
 ## v0.2 — Lint and health
 
